@@ -32,8 +32,19 @@ export const lowerChar = () => {
   return charFrom(charsLowerCase);
 }
 
-export const anyChar = () => {
-  return charFrom(`${charsLowerCase}${charsUpperCase}`);
+export const anyChar = (key: string) => {
+  if (key === 'lowers') {
+    return charFrom(charsLowerCase);
+  }
+  if (key === 'uppers') {
+    return charFrom(charsUpperCase);
+  }
+
+  // if (key === 'specials') {
+  //   return charFrom(specials);
+  // }
+
+  return charFrom(charsNumber);
 }
 
 export const special = () => {

@@ -116,12 +116,25 @@ export default function generate(length: number | number[], options?: IDefaultsC
   lowers = getOptionNum(op.lowers, defaultsConfig.lowers, length);
   length = getRest(length, lowers);
 
+  let key = "";
+  if (uppers !== 0) {
+    key = "uppers";
+  }
+
+  if (lowers !== 0) {
+    key = "lowers";
+  }
+
+  if (specials !== 0) {
+    key = "specials";
+  }
+
   // Make an array of symbols
   while(specials--) tmp.push(special());
   while(nums--)     tmp.push(random(9).toString());
   while(uppers--)   tmp.push(upperChar());
   while(lowers--)   tmp.push(lowerChar());
-  while(length--)   tmp.push(anyChar());
+  while(length--)   tmp.push(anyChar(key));
 
   // Shuffle the array and make a string
   return shuffle(tmp).join('');
