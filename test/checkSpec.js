@@ -2,7 +2,7 @@ describe('Password check', function() {
   'use strict';
 
   var expect   = require('chai').expect,
-      Password = require('../password');
+      Password = require('../lib/index');
 
   describe('Rank 0 (very weak)', function() {
     ['mypassss', '1234567', 'HELLOW', 'Hello'].forEach(function(pass) {
