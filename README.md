@@ -1,79 +1,80 @@
-# password.js
+# password-generation
 
 Password generation and complexity checking without headache
 
-* [![Build Status](https://travis-ci.org/Ptico/passwordjs.svg?branch=master)](https://travis-ci.org/Ptico/passwordjs)
-* [![Code Climate](http://img.shields.io/codeclimate/github/Ptico/passwordjs.svg)](https://codeclimate.com/github/Ptico/passwordjs)
-
 ## Usage
+
+```bash
+$ yarn add password-generation --save
+```
 
 ### Generate password
 
 ```js
-Password.generate(); // Generate password with default options ({specials: 1, nums: 2, uppers: 2, lowers: 3})
-Password.generate(10); // Generate password with length 10 characters
-Password.generate([8, 12]); // Generate password with length 8 to 12 characters
-Password.generate(10, { specials: 3 }); // Generate password with 3 special characters and 10 characters long
-Password.generate([8, 12], { specials: 3, nums: 2, uppers: 3, lowers: 2 }); // Full example
+
+import generation from "password-generation";
+
+generate(); // Generate password with default options ({specials: 1, nums: 2, uppers: 2, lowers: 3})
+generate(10); // Generate password with length 10 characters
+generate([8, 12]); // Generate password with length 8 to 12 characters
+generate(10, { specials: 3 }); // Generate password with 3 special characters and 10 characters long
+generate([8, 12], { specials: 3, nums: 2, uppers: 3, lowers: 2 }); // Full example
 ```
 
 Example:
 
 ```js
-dom('.generate-password').on('click', function() {
-  var password = Password.generate(),
-      input    = dom('#password');
+const generate = require('./lib/index').default;
 
-  input.set('type', 'text'); // Show generated password
-  input.set('value', password);
+const a = generate();
+
+console.log(a);
+
+const b = generate(4);
+
+console.log('长度是4的默认生成密码', b);
+
+const c = generate(10, {
+  specials: 0
 });
-```
 
-### Check password complexity
+console.log('长度是10并且无特殊字符', c);
 
-`Password.score()` calculates overall complexity score, where minimum value is 3 and maximum limited with Javascript string length
-
-```js
-Password.score('badpass'); //=> 9
-Password.score('M)f$you8Ag'); //=> 27
-```
-
-`Password.rank()` returns subjective complexity rank from 0 to 5
-
-```js
-Password.rank('badpass'); //=> 0
-Password.rank('N0tSobad'); //=> 2
-Password.rank('M)f$you8Ag'); //=> 4
-```
-
-Some usage examples:
-
-```js
-dom('#password').on('keydown', function(e) {
-  var password = e.target.value,
-      score    = Password.score(password);
-
-  setComplexityBar(score);
+const d = generate(10, {
+  nums: 0,
 });
-```
 
-```js
-var LEVELS = ['very weak', 'weak', 'normal', 'good', 'very good', 'amazing'];
+console.log('长度是10并且无数字', d);
 
-dom('#password').on('keydown', function(e) {
-  var password = e.target.value,
-      score    = Password.rank(password);
-
-  dom('#password-hint').set('text', LEVELS[score]);
+const e = generate(10, {
+  uppers: 0
 });
+
+console.log('长度是10并且无大写字母', e);
+
+
+const f = generate(10, {
+  lowers: 0
+});
+
+console.log('长度是10并且无小写字母', f);
+
+const g = generate(10, {
+  uppers: 0,
+  lowers: 0
+});
+
+console.log('长度是10并且无大小写字母', g);
+
+const h = generate(10, {
+  uppers: 0,
+  lowers: 0,
+  specials: 0
+});
+
+console.log('长度是10并且无大小写字母和特殊字符', h);
 ```
 
-### Utils
-
-* `Password.Utils.shuffle(array)` - shuffle array values
-* `Password.Utils.upperChar()` - get random uppercase character
-* `Password.Utils.lowerChar()` - get random lowercase character
-* `Password.Utils.anyChar()` - get random character (upper- or lowercase)
-* `Password.Utils.special()` - get random special character
-* `Password.Utils.charFrom(str)` - get random char from given string
-* `Password.Utils.random(max, min)` - get random number from given range (default min: 0)
+```bash
+$ node test.js
+```
