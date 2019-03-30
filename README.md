@@ -1,5 +1,7 @@
 # password-generation
 
+![img](https://img.shields.io/github/license/icepy/password-generation.svg) ![img](https://img.shields.io/github/last-commit/icepy/password-generation/master.svg)
+
 Password generation and complexity checking without headache
 
 ## Usage
@@ -76,5 +78,5 @@ console.log('长度是10并且无大小写字母和特殊字符', h);
 ```
 
 ```bash
-$ node test.js
+$ node test/test.js
 ```

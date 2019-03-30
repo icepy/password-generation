@@ -1,6 +1,6 @@
 {
   "name": "password-generation",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Password generation and complexity checking without headache",
   "main": "lib/index.js",
   "repository": {
