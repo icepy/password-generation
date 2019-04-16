@@ -1,4 +1,4 @@
-const generate = require('./lib/index').default;
+const generate = require('../lib/index').default;
 
 const a = generate();
 
@@ -48,6 +48,13 @@ const h = generate(10, {
 
 console.log('长度是10并且无大小写字母和特殊字符', h);
 
+const j = generate(10, {
+  uppers: 0,
+  lowers: 0,
+  nums: 0
+});
+
+console.log('长度是10并且无大小写字母和数字', j);
 // const i = generate(10, {
 //   uppers: 0,
 //   specials: 0,

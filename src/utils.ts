@@ -39,11 +39,9 @@ export const anyChar = (key: string) => {
   if (key === 'uppers') {
     return charFrom(charsUpperCase);
   }
-
-  // if (key === 'specials') {
-  //   return charFrom(specials);
-  // }
-
+  if (key === 'specials') {
+    return charFrom(specials);
+  }
   return charFrom(charsNumber);
 }
 

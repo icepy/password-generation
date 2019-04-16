@@ -1,4 +1,13 @@
-import { charsLowerCase, charsUpperCase, random, special, shuffle, upperChar, lowerChar, anyChar } from "./utils";
+import {
+  charsLowerCase,
+  charsUpperCase,
+  random,
+  special,
+  shuffle,
+  upperChar,
+  lowerChar,
+  anyChar
+} from "./utils";
 
 export interface IDefaultsConfig {
   length: number[];
